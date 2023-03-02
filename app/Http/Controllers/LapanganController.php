@@ -72,6 +72,7 @@ class LapanganController extends Controller
             $data->jamBuka = $request->jamBuka;
             $data->jamTutup = $request->jamTutup;
             $data->statusToko = $request->statusToko;
+            $data->nomor = $request->nomor;
             $berhasil = $data->save();
             if($berhasil){
                 return response()->json([
@@ -97,6 +98,7 @@ class LapanganController extends Controller
             $data->jamBuka = $request->jamBuka;
             $data->jamTutup = $request->jamTutup;
             $data->statusToko = $request->statusToko;
+            $data->nomor = $request->nomor;
             $data->save();
             return response()->json([
                 'status' => 'berhasil',
@@ -115,6 +117,7 @@ class LapanganController extends Controller
             $data->jamBuka = $request->jamBuka;
             $data->jamTutup = $request->jamTutup;
             $data->statusToko = $request->statusToko;
+            $data->nomor = $request->nomor;
             $data->save();
             return response()->json([
                 'status' => 'berhasil',

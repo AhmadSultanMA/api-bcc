@@ -18,6 +18,8 @@ return new class extends Migration
             $table->foreignId('idKategori')->nullable();
             $table->foreignId('idKota')->nullable();
             $table->integer('statusPartner');
+            $table->string('nomor');
+            $table->text('deskripsi')->nullable();
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

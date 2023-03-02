@@ -78,6 +78,7 @@ class AuthController extends Controller
                 'password' => bcrypt($request->password),
                 'email' => $request->email,
                 'gambar' => 'https://res.cloudinary.com/dfkoknpii/image/upload/v1646532385/lastproject/account_jzb2mv.png',
+                'nomor' => $request->nomor,
                 'statusPartner' => 0,
             ]);
 
@@ -125,6 +126,7 @@ class AuthController extends Controller
                 'password' => bcrypt($request->password),
                 'email' => $request->email,
                 'gambar' => 'https://res.cloudinary.com/dfkoknpii/image/upload/v1646532385/lastproject/account_jzb2mv.png',
+                'nomor' => $request->nomor,
                 'statusPartner' => 0,
             ]);
 
@@ -173,6 +175,7 @@ class AuthController extends Controller
                 'password' => bcrypt($request->password),
                 'email' => $request->email,
                 'gambar' => 'https://res.cloudinary.com/dfkoknpii/image/upload/v1646532385/lastproject/account_jzb2mv.png',
+                'nomor' => $request->nomor,
                 'statusPartner' => 0,
             ]);
 

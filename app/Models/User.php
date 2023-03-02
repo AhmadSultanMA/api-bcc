@@ -22,6 +22,8 @@ class User extends Authenticatable
         'name',
         'idKategori',
         'idKota',
+        'deskirpsi',
+        'nomor',
         'statusPartner',
         'email',
         'gambar',

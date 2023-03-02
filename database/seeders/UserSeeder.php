@@ -20,6 +20,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('adminbolehlogin'),
             'gambar' => 'https://res.cloudinary.com/dfkoknpii/image/upload/v1646532385/lastproject/account_jzb2mv.png',
             'statusPartner' => 0,
+            'nomor' => '6281210011827',
         ]);
         $admin->assignRole('admin');
 
@@ -29,6 +30,7 @@ class UserSeeder extends Seeder
             'password' => bcrypt('penjualbolehlogin'),
             'gambar' => 'https://res.cloudinary.com/dfkoknpii/image/upload/v1646532385/lastproject/account_jzb2mv.png',
             'statusPartner' => 0,
+            'nomor' => '6281210011827',
         ]);
         $penjual->assignRole('penjual');
     }

@@ -20,13 +20,13 @@ return new class extends Migration
             $table->foreignId('idOwner');
             $table->string('namaLapangan');
             $table->string('lokasi');
-            $table->string('deskripsi');
+            $table->text('deskripsi');
             $table->integer('harga');
             $table->string('gambar');
             $table->integer('jamBuka');
             $table->integer('jamTutup');
             $table->integer('statusToko');
-            $table->integer('nomor');
+            $table->string('nomor');
             $table->timestamps();
         });
     }
