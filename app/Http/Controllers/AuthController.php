@@ -132,7 +132,7 @@ class AuthController extends Controller
                 'message' => $errorString,
             ],401);
         }else{
-            $penjual = User::create([
+            $user = User::create([
                 'name' => $request->name,
                 'password' => bcrypt($request->password),
                 'email' => $request->email,
@@ -141,9 +141,9 @@ class AuthController extends Controller
                 'statusPartner' => 0,
             ]);
 
-        if ($penjual) {
-            $penjual->assignRole('penjual');
-            $role = "penjual";
+        if ($user) {
+            $user->assignRole('penjual');
+            $role = 'penjual';
         }else {
             return response()->json([
                 'status' => 'Failed',
@@ -165,6 +165,58 @@ class AuthController extends Controller
         }
         
     }
+
+    public function registerPelatih(Request $request)
+    {
+        $rules = array(
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|unique:users,email',
+            'password' => 'required|string|min:6|confirmed',
+            // 'gambar' => 'required|string|max:255',
+        );
+
+        $cek = Validator::make($request->all(),$rules);
+
+        if($cek->fails()){
+            $errorString = implode(",",$cek->messages()->all());
+            return response()->json([
+                'message' => $errorString,
+            ],401);
+        }else{
+            $user = User::create([
+                'name' => $request->name,
+                'password' => bcrypt($request->password),
+                'email' => $request->email,
+                'gambar' => 'https://res.cloudinary.com/dfkoknpii/image/upload/v1646532385/lastproject/account_jzb2mv.png',
+                'nomor' => $request->nomor,
+                'statusPartner' => 0,
+            ]);
+
+        if ($user) {
+            $user->assignRole('pelatih');
+            $role = 'pelatih';
+        }else {
+            return response()->json([
+                'status' => 'Failed',
+                'message' => 'Gagal',
+            ],422);
+        }
+
+        $token = $user->createToken('token-name')->plainTextToken;
+
+        return response()->json([
+            'status' => 'Success',
+            'message' => 'Berhasil membuat akun',
+            'role' => $role,
+            'user' => $user->name,
+            'nomor'=> $user->nomor,
+            'id'=> $user->id,
+            'token' => $token,
+        ],201);
+        }
+        
+    }
+
 
     public function registerAdmin(Request $request)
     {

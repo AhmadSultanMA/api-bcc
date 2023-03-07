@@ -31,7 +31,7 @@ class LapanganController extends Controller
         ]);
     }
 
-    public function showById($id)
+    public function showLapanganById($id)
     {
         $data = Lapangan::where('id',$id)->first();
         $owner = $data->user;

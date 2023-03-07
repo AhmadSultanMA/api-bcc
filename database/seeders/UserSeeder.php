@@ -33,5 +33,15 @@ class UserSeeder extends Seeder
             'nomor' => '6281210011827',
         ]);
         $penjual->assignRole('penjual');
+
+        $pelatih = User::create([
+            'name' => 'pelatih',
+            'email' => 'pelatih@gmail.com',
+            'password' => bcrypt('pelatihbolehlogin'),
+            'gambar' => 'https://res.cloudinary.com/dfkoknpii/image/upload/v1646532385/lastproject/account_jzb2mv.png',
+            'statusPartner' => 0,
+            'nomor' => '6281210011827',
+        ]);
+        $pelatih->assignRole('pelatih');
     }
 }

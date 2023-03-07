@@ -27,6 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     // Authentication
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/registerPenjual', [AuthController::class, 'registerPenjual']);
+    Route::post('/registerPelatih', [AuthController::class, 'registerPelatih']);
     Route::post('/login',[AuthController::class, 'login']);
    
     // Kota
@@ -37,7 +38,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
     // Lapangan
     Route::get('/showLapangan/{idKategori}/{idKota}',[LapanganController::class, 'showLapangan']);
-    Route::get('/showId/{id}',[LapanganController::class, 'showById']);
+    Route::get('/showLapanganById/{id}',[LapanganController::class, 'showLapanganById']);
     Route::get('/searchLapangan/{name}',[LapanganController::class, 'searchLapangan']);
 
 Route::group(['middleware' => 'auth:sanctum'], function() {
