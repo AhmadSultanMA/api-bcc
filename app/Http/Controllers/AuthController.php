@@ -20,6 +20,15 @@ class AuthController extends Controller
         ]);
     }
 
+    public function showUserById($id)
+    {
+        $data = User::where('id',$id)->first();
+        return response()->json([
+            'status' => 'berhasil',
+            'data' => $data,
+        ],200);
+    }
+
     public function searchUser($name)
     {
         $data = User::where('name','like','%'.$name.'%')->get();

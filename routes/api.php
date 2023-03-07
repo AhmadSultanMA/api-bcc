@@ -44,6 +44,7 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
     // Authentication
     Route::post('/logout',[AuthController::class, 'logout']);
     Route::get('/cariPartner/{idKota}/{idKategori}', [AuthController::class, 'findPartner']);
+    Route::get('/userId/{id}', [AuthController::class, 'showUserById']);
     Route::post('/editIdUser',[AuthController::class, 'editIdUser']);
 
     Route::group(['middleware' => ['role:admin|penjual']], function () {
