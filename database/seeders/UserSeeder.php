@@ -43,5 +43,6 @@ class UserSeeder extends Seeder
             'nomor' => '6281210011827',
         ]);
         $pelatih->assignRole('pelatih');
+        // d
     }
 }

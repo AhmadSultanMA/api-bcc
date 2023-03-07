@@ -228,6 +228,7 @@ class AuthController extends Controller
         );
 
         $cek = Validator::make($request->all(),$rules);
+        // d
 
         if($cek->fails()){
             $errorString = implode(",",$cek->messages()->all());
