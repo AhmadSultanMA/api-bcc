@@ -98,7 +98,9 @@ class AuthController extends Controller
             'status' => 'Success',
             'message' => 'Berhasil membuat akun',
             'role' => $role,
-            'user' => $user,
+            'user' => $user->name,
+            'nomor'=>$user->nomor,
+            'id'=>$user->id,
             'token' => $token,
         ],201);
         } 
@@ -146,7 +148,9 @@ class AuthController extends Controller
             'status' => 'Success',
             'message' => 'Berhasil membuat akun',
             'role' => $role,
-            'user' => $user,
+            'user' => $user->name,
+            'nomor'=>$user->nomor,
+            'id'=>$user->id,
             'token' => $token,
         ],201);
         }
@@ -227,7 +231,9 @@ class AuthController extends Controller
             return response()->json([
                 'status' => 'Success',
                 'message' => 'Berhasil login',
-                'user' => $user,
+                'user' => $user->name,
+                'nomor'=>$user->nomor,
+                'id'=>$user->id,
                 'role' => $roles,
                 'token' => $token,
             ],200);
