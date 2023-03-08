@@ -20,7 +20,10 @@ class UserSeeder extends Seeder
             'password' => bcrypt('adminbolehlogin'),
             'gambar' => 'https://res.cloudinary.com/dfkoknpii/image/upload/v1646532385/lastproject/account_jzb2mv.png',
             'statusPartner' => 0,
-            'nomor' => '6281210011827',
+            'nomor' => '6281210011825',
+            'jenisKelamin' => 1,
+            'umur' => 17,
+            'pekerjaan' => 'Rahasia',
         ]);
         $admin->assignRole('admin');
 
@@ -31,6 +34,9 @@ class UserSeeder extends Seeder
             'gambar' => 'https://res.cloudinary.com/dfkoknpii/image/upload/v1646532385/lastproject/account_jzb2mv.png',
             'statusPartner' => 0,
             'nomor' => '6281210011827',
+            'jenisKelamin' => 1,
+            'umur' => 17,
+            'pekerjaan' => 'Rahasia',
         ]);
         $penjual->assignRole('penjual');
 
@@ -40,7 +46,10 @@ class UserSeeder extends Seeder
             'password' => bcrypt('pelatihbolehlogin'),
             'gambar' => 'https://res.cloudinary.com/dfkoknpii/image/upload/v1646532385/lastproject/account_jzb2mv.png',
             'statusPartner' => 0,
-            'nomor' => '6281210011827',
+            'nomor' => '6281210011824',
+            'jenisKelamin' => 1,
+            'umur' => 17,
+            'pekerjaan' => 'Rahasia',
         ]);
         $pelatih->assignRole('pelatih');
         // d

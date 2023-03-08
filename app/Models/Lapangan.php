@@ -40,4 +40,9 @@ class Lapangan extends Model
     {
         return $this->belongsTo(Kota::class,'idKota');
     }
+
+    public function alatSewa()
+    {
+        return $this->hasMany(AlatSewa::class);
+    }
 }

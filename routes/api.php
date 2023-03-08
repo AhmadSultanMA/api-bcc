@@ -54,6 +54,14 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
         Route::get('/showOwnedLapangan/{idOwner}',[LapanganController::class, 'showOwnedLapangan']);
         Route::post('/deleteLapangan/{id}',[LapanganController::class, 'deleteLapangan']);
         Route::post('/updateLapangan',[LapanganController::class, 'updateLapangan']);
+
+        // AlatSewa
+        Route::post('/addAlat',[AlatSewaController::class, 'addAlat']);
+        Route::get('/showAlatById/{id}',[AlatSewaController::class, 'showAlatById']);
+        Route::get('/showAlat/{idLapangan}',[AlatSewaController::class, 'showAlat']);
+        Route::post('/updateAlat',[AlatSewaController::class, 'updateAlat']);
+        Route::post('/deleteAlat/{id}',[AlatSewaController::class, 'deleteAlat']);
+
     });
 
     Route::group(['middleware' => ['role:admin']], function () {

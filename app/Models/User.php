@@ -24,6 +24,9 @@ class User extends Authenticatable
         'idKota',
         'deskirpsi',
         'nomor',
+        'jenisKelamin',
+        'pekerjaan',
+        'umur',
         'statusPartner',
         'email',
         'gambar',
@@ -52,6 +55,11 @@ class User extends Authenticatable
     public function lapangan()
     {
         return $this->hasMany(Lapangan::class);
+    }
+
+    public function alatSewa()
+    {
+        return $this->hasMany(AlatSewa::class);
     }
 
     public function Kategori()
