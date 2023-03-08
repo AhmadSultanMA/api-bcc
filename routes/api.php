@@ -48,6 +48,8 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::get('/userId/{id}', [AuthController::class, 'showUserById']);
     Route::post('/editIdUser',[AuthController::class, 'editIdUser']);
 
+    Route::get('/showAlat/{idLapangan}',[AlatSewaController::class, 'showAlat']);
+
     Route::group(['middleware' => ['role:admin|penjual']], function () {
         // Lapangan
         Route::post('/addLapangan',[LapanganController::class, 'addLapangan']);
@@ -57,8 +59,6 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
 
         // AlatSewa
         Route::post('/addAlat',[AlatSewaController::class, 'addAlat']);
-        Route::get('/showAlatById/{id}',[AlatSewaController::class, 'showAlatById']);
-        Route::get('/showAlat/{idLapangan}',[AlatSewaController::class, 'showAlat']);
         Route::post('/updateAlat',[AlatSewaController::class, 'updateAlat']);
         Route::post('/deleteAlat/{id}',[AlatSewaController::class, 'deleteAlat']);
 

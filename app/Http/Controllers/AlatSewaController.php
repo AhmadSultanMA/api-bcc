@@ -17,15 +17,6 @@ class AlatSewaController extends Controller
         ]);
     }
 
-    public function showAlatById($id)
-    {
-        $data = AlatSewa::where('id',$id)->first();
-        return response()->json([
-            'status' => 'berhasil',
-            'data' => $data,
-        ]);
-    }
-
     public function addAlat(Request $request)
     {
         $data = new AlatSewa;
