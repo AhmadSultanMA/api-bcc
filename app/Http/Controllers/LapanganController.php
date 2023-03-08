@@ -129,7 +129,7 @@ class LapanganController extends Controller
 
     public function deleteLapangan($id)
     {
-        $data = Lapangan::where($id,'id')->first();
+        $data = Lapangan::where('id',$id)->first();
 
         $data->delete();
 

@@ -50,7 +50,7 @@ class AlatSewaController extends Controller
 
     public function deleteAlat($id)
     {
-        $data = AlatSewa::where($id,'id')->first();
+        $data = AlatSewa::where('id',$id)->first();
 
         $data->delete();
 
