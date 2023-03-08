@@ -6,7 +6,8 @@ use App\Http\Controllers\{
     AuthController,
     KotaController,
     KategoriController,
-    LapanganController
+    LapanganController,
+    AlatSewaController
 };
 
 
