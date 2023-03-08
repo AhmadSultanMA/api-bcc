@@ -36,7 +36,7 @@ class AlatSewaController extends Controller
 
     public function updateAlat(Request $request)
     {
-        $data = AlatSewa::where('id',$request->id)->where('idOwner',$idOwner)->first();
+        $data = AlatSewa::where('id',$request->id)->where('idOwner',$request->idOwner)->first();
         $data->namaAlat = $request->namaAlat;
         $data->jumlah = $request->jumlah;
         $data->harga = $request->harga;
