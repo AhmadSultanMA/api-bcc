@@ -15,9 +15,6 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('idKategori')->nullable();
-            $table->foreignId('idKota')->nullable();
-            $table->integer('statusPartner');
             $table->string('nomor');
             $table->text('deskripsi')->nullable();
             $table->string('name');

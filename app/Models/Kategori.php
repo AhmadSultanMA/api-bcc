@@ -19,8 +19,8 @@ class Kategori extends Model
         return $this->hasMany(Lapangan::class);
     }
 
-    public function user()
+    public function cariTeman()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(CariTeman::class);
     }
 }

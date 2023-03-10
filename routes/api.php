@@ -7,7 +7,8 @@ use App\Http\Controllers\{
     KotaController,
     KategoriController,
     LapanganController,
-    AlatSewaController
+    AlatSewaController,
+    CariTemanController
 };
 
 
@@ -45,11 +46,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::group(['middleware' => 'auth:sanctum'], function() {
     // Authentication
     Route::post('/logout',[AuthController::class, 'logout']);
-    Route::get('/cariPartner/{idKota}/{idKategori}', [AuthController::class, 'findPartner']);
     Route::get('/userId/{id}', [AuthController::class, 'showUserById']);
-    Route::post('/editIdUser',[AuthController::class, 'editIdUser']);
 
     Route::get('/showAlat/{idLapangan}',[AlatSewaController::class, 'showAlat']);
+
+    Route::post('/addCariTeman',[CariTemanController::class, 'addCariTeman']);
+    Route::post('/updateCariTeman',[CariTemanController::class, 'updateCariTeman']);
+    Route::get('/cariTeman/{idKategori}/{idKota}',[CariTemanController::class, 'showCariTeman']);
+    Route::post('/deleteCariTeman/{id}',[CariTemanController::class, 'deleteCariTeman']);
 
     Route::group(['middleware' => ['role:admin|penjual']], function () {
         // Lapangan

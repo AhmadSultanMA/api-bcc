@@ -39,31 +39,7 @@ class AuthController extends Controller
         ]);
     }
 
-    public function findPartner($idKota,$idKategori)
-    {
-        $data = User::where('idKota',$idKota)->where('idKategori',$idKategori)->get();
 
-        return response()->json([
-            'status' => 'berhasil',
-            'data' => $data,
-        ]);
-    }
-
-    public function editIdUser(Request $request)
-    {
-        $data = User::where('id',$request->id)->first();
-
-        $data->idKota = $request->idKota;
-        $data->idKategori = $request->idKategori;
-        $data->statusPartner = $request->statusPartner;
-        $data->save();
-
-        return response()->json([
-            'status' => 'berhasil',
-            'data' => $data,
-        ],200);
-
-    }
 
     public function register(Request $request)
     {
@@ -91,7 +67,6 @@ class AuthController extends Controller
                 'jenisKelamin' => $request->jenisKelamin,
                 'umur' => $request->umur,
                 'pekerjaan' => $request->pekerjaan,
-                'statusPartner' => 0,
             ]);
 
         if ($user) {
@@ -144,7 +119,6 @@ class AuthController extends Controller
                 'jenisKelamin' => $request->jenisKelamin,
                 'umur' => $request->umur,
                 'pekerjaan' => $request->pekerjaan,
-                'statusPartner' => 0,
             ]);
 
         if ($user) {
@@ -198,7 +172,6 @@ class AuthController extends Controller
                 'jenisKelamin' => $request->jenisKelamin,
                 'umur' => $request->umur,
                 'pekerjaan' => $request->pekerjaan,
-                'statusPartner' => 0,
             ]);
 
         if ($user) {
@@ -254,7 +227,6 @@ class AuthController extends Controller
                 'jenisKelamin' => $request->jenisKelamin,
                 'umur' => $request->umur,
                 'pekerjaan' => $request->pekerjaan,
-                'statusPartner' => 0,
             ]);
 
         if ($user) {

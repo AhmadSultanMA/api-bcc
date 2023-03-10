@@ -20,14 +20,11 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'idKategori',
-        'idKota',
         'deskirpsi',
         'nomor',
         'jenisKelamin',
         'pekerjaan',
         'umur',
-        'statusPartner',
         'email',
         'gambar',
         'password',
@@ -57,18 +54,13 @@ class User extends Authenticatable
         return $this->hasMany(Lapangan::class);
     }
 
+    public function cariTeman()
+    {
+        return $this->hasMany(CariTeman::class);
+    }
+
     public function alatSewa()
     {
         return $this->hasMany(AlatSewa::class);
-    }
-
-    public function Kategori()
-    {
-        return $this->belongsTo(Kategori::class,'idKategori');
-    }
-
-    public function Kota()
-    {
-        return $this->belongsTo(Kota::class,'idKota');
     }
 }
