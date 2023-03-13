@@ -58,12 +58,12 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::get('/cariTeman/{idKategori}/{idKota}',[CariTemanController::class, 'showCariTeman']);
     Route::post('/deleteCariTeman/{id}',[CariTemanController::class, 'deleteCariTeman']);
 
-    Route::get('/addAccTeman',[AccTemanController::class, 'addAccTeman']);
+    Route::post('/addAccTeman',[AccTemanController::class, 'addAccTeman']);
     Route::get('/showAccTeman/{idCariTeman}/{idTeman}',[AccTemanController::class, 'showAccTeman']);
     Route::get('/showAccTemanById/{id}',[AccTemanController::class, 'showAccTemanById']);
     Route::get('/showOwnerTeman/{idCariTeman}/{idOwner}',[AccTemanController::class, 'showOwnerTeman']);
-    Route::get('/editAccTeman',[AccTemanController::class, 'editAccTeman']);
-    Route::get('/deleteAccTeman/{id}/{idOwner}',[AccTemanController::class, 'deleteAccTeman']);
+    Route::post('/editAccTeman',[AccTemanController::class, 'editAccTeman']);
+    Route::post('/deleteAccTeman/{id}/{idOwner}',[AccTemanController::class, 'deleteAccTeman']);
 
     Route::group(['middleware' => ['role:admin|penjual']], function () {
         // Lapangan
