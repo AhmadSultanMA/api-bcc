@@ -10,12 +10,18 @@ class AccTemanController extends Controller
 {
     public function addAccTeman(Request $request)
     {
+        $data = new AccTeman;
+
         $data->idCariTeman = $request->idCariTeman;
         $data->idOwner = $request->idOwner;
         $data->idTeman = $request->idTeman;
         $data->status = $request->status;
+        $data->save();
 
-        $data = new AccTeman;
+        return response()->json([
+            'status' => 'berhasil',
+            'data' => $data,
+        ]);
     }
 
     public function showAccTeman($idCariTeman,$idTeman)
