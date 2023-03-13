@@ -21,6 +21,32 @@ class LapanganController extends Controller
         ]);
     }
 
+    public function showLapanganTerendah($idKategori,$idKota)
+    {
+        $data = Lapangan::where('idKategori',$idKategori)->where('idKota',$idKota)->orderBy('harga','asc')->get();
+        foreach($data as $item){
+            $owner = $item->user;
+        } 
+
+        return response()->json([
+            'status' => 'berhasil',
+            'data' =>$data,
+        ]);
+    }
+
+    public function showLapanganTertinggi($idKategori,$idKota)
+    {
+        $data = Lapangan::where('idKategori',$idKategori)->where('idKota',$idKota)->orderBy('harga','desc')->get();
+        foreach($data as $item){
+            $owner = $item->user;
+        } 
+
+        return response()->json([
+            'status' => 'berhasil',
+            'data' =>$data,
+        ]);
+    }
+
     public function showOwnedLapangan($idOwner)
     {
         $data = Lapangan::where('idOwner',$idOwner)->get();

@@ -63,4 +63,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(AlatSewa::class);
     }
+
+    public function accTeman()
+    {
+        return $this->hasMany(AccTeman::class);
+    }
 }

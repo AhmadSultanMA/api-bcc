@@ -44,4 +44,9 @@ class CariTeman extends Model
     {
         return $this->belongsTo(Kota::class,'idKota');
     }
+
+    public function accTeman()
+    {
+        return $this->hasMany(AccTeman::class);
+    }
 }

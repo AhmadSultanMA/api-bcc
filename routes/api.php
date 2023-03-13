@@ -8,7 +8,8 @@ use App\Http\Controllers\{
     KategoriController,
     LapanganController,
     AlatSewaController,
-    CariTemanController
+    CariTemanController,
+    AccTemanController
 };
 
 
@@ -31,7 +32,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::post('/registerPenjual', [AuthController::class, 'registerPenjual']);
     Route::post('/registerPelatih', [AuthController::class, 'registerPelatih']);
     Route::post('/login',[AuthController::class, 'login']);
-   
+    
     // Kota
     Route::get('/showKota',[KotaController::class, 'showKota']);
 
@@ -40,6 +41,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
     // Lapangan
     Route::get('/showLapangan/{idKategori}/{idKota}',[LapanganController::class, 'showLapangan']);
+    Route::get('/showLapanganTerendah/{idKategori}/{idKota}',[LapanganController::class, 'showLapanganTerendah']);
+    Route::get('/showLapanganTertinggi/{idKategori}/{idKota}',[LapanganController::class, 'showLapanganTertinggi']);
     Route::get('/showLapanganById/{id}',[LapanganController::class, 'showLapanganById']);
     Route::get('/searchLapangan/{name}',[LapanganController::class, 'searchLapangan']);
 
@@ -54,6 +57,13 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::post('/updateCariTeman',[CariTemanController::class, 'updateCariTeman']);
     Route::get('/cariTeman/{idKategori}/{idKota}',[CariTemanController::class, 'showCariTeman']);
     Route::post('/deleteCariTeman/{id}',[CariTemanController::class, 'deleteCariTeman']);
+
+    Route::get('/addAccTeman',[AccTemanController::class, 'addAccTeman']);
+    Route::get('/showAccTeman/{idCariTeman}/{idTeman}',[AccTemanController::class, 'showAccTeman']);
+    Route::get('/showAccTemanById/{id}',[AccTemanController::class, 'showAccTemanById']);
+    Route::get('/showOwnerTeman/{idCariTeman}/{idOwner}',[AccTemanController::class, 'showOwnerTeman']);
+    Route::get('/editAccTeman',[AccTemanController::class, 'editAccTeman']);
+    Route::get('/deleteAccTeman/{id}/{idOwner}',[AccTemanController::class, 'deleteAccTeman']);
 
     Route::group(['middleware' => ['role:admin|penjual']], function () {
         // Lapangan

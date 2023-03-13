@@ -39,7 +39,38 @@ class AuthController extends Controller
         ]);
     }
 
+    public function editUser(Request $request)
+    {
+        $data = User::where('id',$request->id)->first();
+        if ($request->file('gambar') === null){
+        $data->name = $request->name;
+        $data->pekerjaan = $request->pekerjaan;
+        $data->umur = $request->umur;
+        $data->deskripsi = $request->deskripsi;
+        $data->save();
 
+        return response()->json([
+            'status' => 'berhasil',
+            'data' => $data,
+        ],200);
+        }else{
+            $file  = $request->file('gambar');
+            $image = $data->gambar;
+            $result = CloudinaryStorage::replace($image, $file->getRealPath(), $file->getClientOriginalName());
+            
+            $data->name = $request->name;
+            $data->pekerjaan = $request->pekerjaan;
+            $data->umur = $request->umur;
+            $data->deskripsi = $request->deskripsi;
+            $data->gambar = $result;
+            $data->save();
+
+            return response()->json([
+                'status' => 'berhasil',
+                'data' => $data,
+            ],200);
+        }
+    }
 
     public function register(Request $request)
     {
