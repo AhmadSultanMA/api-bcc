@@ -10,7 +10,7 @@ class CariTemanController extends Controller
 {
     public function showCariTeman($idKategori,$idKota)
     {
-        $data = CariTeman::where('idKategori',$idKategori)->where('idKota',$idKota);
+        $data = CariTeman::where('idKategori',$idKategori)->where('idKota',$idKota)->get();
         foreach($data as $item){
             $owner = $item->user;
         } 

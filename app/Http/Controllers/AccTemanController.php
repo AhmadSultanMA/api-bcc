@@ -28,8 +28,7 @@ class AccTemanController extends Controller
     {
         $data = AccTeman::where('idCariTeman',$idCariTeman)->where('idTeman',$idTeman)->get();
         foreach($data as $item){
-            $nama = $item->owner->name;
-            $nomor = $item->owner->nomor;
+            $owner = $item->owner;
         }
 
         return response()->json([
@@ -52,8 +51,7 @@ class AccTemanController extends Controller
     {
         $data = AccTeman::where('idCariTeman',$idCariTeman)->where('idOwner',$idOwner)->get();
         foreach($data as $item){
-            $nama = $item->teman->name;
-            $nomor = $item->teman->nomor;
+            $teman = $item->teman;
         }
 
         return response()->json([

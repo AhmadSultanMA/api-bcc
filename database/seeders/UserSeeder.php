@@ -49,6 +49,30 @@ class UserSeeder extends Seeder
             'pekerjaan' => 'Rahasia',
         ]);
         $pelatih->assignRole('pelatih');
+
+        $user = User::create([
+            'name' => 'user',
+            'email' => 'user@gmail.com',
+            'password' => bcrypt('userbolehlogin'),
+            'gambar' => 'https://res.cloudinary.com/dfkoknpii/image/upload/v1646532385/lastproject/account_jzb2mv.png',
+            'nomor' => '6281210011754',
+            'jenisKelamin' => 1,
+            'umur' => 17,
+            'pekerjaan' => 'Mahasiswa',
+        ]);
+        $user->assignRole('user');
+
+        $user1 = User::create([
+            'name' => 'user1',
+            'email' => 'user1@gmail.com',
+            'password' => bcrypt('user1bolehlogin'),
+            'gambar' => 'https://res.cloudinary.com/dfkoknpii/image/upload/v1646532385/lastproject/account_jzb2mv.png',
+            'nomor' => '6281211111754',
+            'jenisKelamin' => 1,
+            'umur' => 17,
+            'pekerjaan' => 'Mahasiswa',
+        ]);
+        $user1->assignRole('user');
         // d
     }
 }
