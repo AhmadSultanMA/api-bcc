@@ -10,7 +10,7 @@ class CariTeman extends Model
 {
     use HasFactory;
 
-    protected $table = "cariteman";
+    protected $table = 'cariteman';
     protected $fillable = [
         'idOwner',
         'idKota',

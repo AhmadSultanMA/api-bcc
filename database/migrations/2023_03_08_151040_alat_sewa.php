@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('alatSewa', function (Blueprint $table) {
+        Schema::create('alatsewa', function (Blueprint $table) {
             $table->id();
             $table->foreignId('idLapangan');
             $table->foreignId('idOwner');

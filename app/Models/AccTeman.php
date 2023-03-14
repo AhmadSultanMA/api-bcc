@@ -9,7 +9,7 @@ class AccTeman extends Model
 {
     use HasFactory;
 
-    protected $table = "accteman";
+    protected $table = 'accteman';
     protected $fillable = [
         'idCariTeman',
         'idTeman',
