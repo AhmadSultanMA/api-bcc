@@ -64,7 +64,7 @@ class OrderController extends Controller
     public function callback(Request $request)
     {
         $serverKey = config('midtrans.server_key');
-        $hashed = Hash::make($request->order_id.$request->status_code.$request->gross_amount.$serverKey);
+        $hashed = Hash::make("sha12",$request->order_id.$request->status_code.$request->gross_amount.$serverKey);
         if($hashed == $request->signature_key){
             if($request->transaction_status == 'capture'){
                 $order == Order::where('id',$request->order_id);
@@ -75,6 +75,12 @@ class OrderController extends Controller
                     'data' => $order,
                 ]);
             }
+            return response()->json([
+                'data' => 'berhasil mendapat hash',
+            ]);
         }
+        return response()->json([
+            'data' => 'gagal mendapat hash',
+        ]);
     }
 }
