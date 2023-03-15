@@ -48,8 +48,8 @@ class OrderController extends Controller
                 'authentication'=> true,
             ),
             'customer_details' => array(
-                'email' => $order->user->email,
                 'name' => $order->user->name,
+                'email' => $order->user->email,
                 'phone' => $order->user->nomor,
             ),
         );
@@ -74,10 +74,12 @@ class OrderController extends Controller
                 return response()->json([
                     'data' => $order,
                 ]);
+            }else if($request->transaction_status == 'deny'){
+                return response()->json([
+                    'data' => 'pembayaran di tolak',
+                ]);
             }
-            return response()->json([
-                'data' => 'berhasil mendapat hash',
-            ]);
+           
         }
         return response()->json([
             'data' => 'gagal mendapat hash',
