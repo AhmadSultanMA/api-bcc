@@ -34,13 +34,15 @@ class OrderController extends Controller
         $order->jamSelesai = $request->jamSelesai;
         $order->jamMulai = $request->jamMulai;
         $order->save();
+
+        $data::where('id',$order->id)->first();
         // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = config('midtrans.server_key');
 
         $params = array(
             'transaction_details' => array(
-                'order_id' => $order->id,
-                'gross_amount' => $order->harga,
+                'order_id' => $data->id,
+                'gross_amount' => $data->harga,
             ),
             'payment_type' => 'credit_card',
             'credit_card'  => array(
@@ -48,9 +50,9 @@ class OrderController extends Controller
                 'authentication'=> true,
             ),
             'customer_details' => array(
-                'name' => $order->user->name,
-                'email' => $order->user->email,
-                'phone' => $order->user->nomor,
+                'name' => $data->user->name,
+                'email' => $data->user->email,
+                'phone' => $data->user->nomor,
             ),
         );
         
