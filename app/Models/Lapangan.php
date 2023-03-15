@@ -45,4 +45,9 @@ class Lapangan extends Model
     {
         return $this->hasMany(AlatSewa::class);
     }
+
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

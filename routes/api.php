@@ -9,7 +9,8 @@ use App\Http\Controllers\{
     LapanganController,
     AlatSewaController,
     CariTemanController,
-    AccTemanController
+    AccTemanController,
+    OrderController
 };
 
 
@@ -33,6 +34,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::post('/registerPelatih', [AuthController::class, 'registerPelatih']);
     Route::post('/login',[AuthController::class, 'login']);
     
+    Route::post('/checkout', [OrderController::class, 'checkout']);
+    Route::post('/callback', [OrderController::class, 'callback']);
+
     // Kota
     Route::get('/showKota',[KotaController::class, 'showKota']);
 
@@ -40,8 +44,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('/showKategori',[KategoriController::class, 'showKategori']);
 
     // Cari Teman
-    Route::get('/showSemuaTeman',[LapanganController::class, 'showAllTeman']);
-
+    Route::get('/showSemuaTeman',[CariTemanController::class, 'showAllTeman']);
 
     // Lapangan
     Route::get('/showSemuaLapangan',[LapanganController::class, 'showAllLapangan']);

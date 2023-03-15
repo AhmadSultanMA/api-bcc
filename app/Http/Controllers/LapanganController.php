@@ -11,9 +11,11 @@ class LapanganController extends Controller
     public function showAllLapangan()
     {
         $data = Lapangan::get();
-        $owner = $data->user;
-        $kota = $data->kota;
-        $kategori = $data->kategori;
+        foreach($data as $item){
+            $owner = $item->user;
+            $kota = $item->kota;
+            $kategori = $item->kategori;
+        }
 
         return response()->json([
             'status' => 'berhasil',

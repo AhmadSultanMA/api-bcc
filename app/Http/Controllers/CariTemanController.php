@@ -11,7 +11,9 @@ class CariTemanController extends Controller
     public function showAllTeman()
     {
         $data = CariTeman::get();
-        $owner = $data->user;
+        foreach($data as $item){
+            $owner = $item->user;
+        } 
 
         return response()->json([
             'status' => 'berhasil',
