@@ -35,7 +35,7 @@ class OrderController extends Controller
         $order->jamMulai = $request->jamMulai;
         $order->save();
 
-        $data::where('id',$order->id)->first();
+        $data = Order::where('id',$order->id)->first();
         // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = config('midtrans.server_key');
 
