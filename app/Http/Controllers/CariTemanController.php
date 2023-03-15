@@ -13,7 +13,9 @@ class CariTemanController extends Controller
         $data = CariTeman::get();
         foreach($data as $item){
             $owner = $item->user;
-        } 
+            $kota = $item->kota;
+            $kategori = $item->kategori;
+        }
 
         return response()->json([
             'status' => 'berhasil',
@@ -26,7 +28,9 @@ class CariTemanController extends Controller
         $data = CariTeman::where('idKategori',$idKategori)->where('idKota',$idKota)->get();
         foreach($data as $item){
             $owner = $item->user;
-        } 
+            $kota = $item->kota;
+            $kategori = $item->kategori;
+        }
 
         return response()->json([
             'status' => 'berhasil',
