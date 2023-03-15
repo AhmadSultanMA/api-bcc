@@ -8,6 +8,17 @@ use App\Models\CariTeman;
 
 class CariTemanController extends Controller
 {
+    public function showAllTeman()
+    {
+        $data = CariTeman::get();
+        $owner = $data->user;
+
+        return response()->json([
+            'status' => 'berhasil',
+            'data' => $data,
+        ]);
+    }
+
     public function showCariTeman($idKategori,$idKota)
     {
         $data = CariTeman::where('idKategori',$idKategori)->where('idKota',$idKota)->get();

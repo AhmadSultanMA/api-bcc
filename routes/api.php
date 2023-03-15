@@ -39,7 +39,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     // Kategori
     Route::get('/showKategori',[KategoriController::class, 'showKategori']);
 
+    // Cari Teman
+    Route::get('/showSemuaTeman',[LapanganController::class, 'showAllTeman']);
+
+
     // Lapangan
+    Route::get('/showSemuaLapangan',[LapanganController::class, 'showAllLapangan']);
     Route::get('/showLapangan/{idKategori}/{idKota}',[LapanganController::class, 'showLapangan']);
     Route::get('/showLapanganTerendah/{idKategori}/{idKota}',[LapanganController::class, 'showLapanganTerendah']);
     Route::get('/showLapanganTertinggi/{idKategori}/{idKota}',[LapanganController::class, 'showLapanganTertinggi']);

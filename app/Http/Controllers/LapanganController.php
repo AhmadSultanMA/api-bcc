@@ -8,6 +8,18 @@ use App\Models\Lapangan;
 
 class LapanganController extends Controller
 {
+    public function showAllLapangan()
+    {
+        $data = Lapangan::get();
+        $owner = $data->user;
+        $kota = $data->kota;
+        $kategori = $data->kategori;
+
+        return response()->json([
+            'status' => 'berhasil',
+            'data' =>$data,
+        ]);
+    }
     public function showLapangan($idKategori,$idKota)
     {
         $data = Lapangan::where('idKategori',$idKategori)->where('idKota',$idKota)->get();
