@@ -13,6 +13,8 @@ class LapanganController extends Controller
         $data = Lapangan::where('idKategori',$idKategori)->where('idKota',$idKota)->get();
         foreach($data as $item){
             $owner = $item->user;
+            $kota = $item->kota;
+            $kategori = $item->kategori;
         } 
 
         return response()->json([
@@ -26,6 +28,8 @@ class LapanganController extends Controller
         $data = Lapangan::where('idKategori',$idKategori)->where('idKota',$idKota)->orderBy('harga','asc')->get();
         foreach($data as $item){
             $owner = $item->user;
+            $kota = $item->kota;
+            $kategori = $item->kategori;
         } 
 
         return response()->json([
@@ -39,6 +43,8 @@ class LapanganController extends Controller
         $data = Lapangan::where('idKategori',$idKategori)->where('idKota',$idKota)->orderBy('harga','desc')->get();
         foreach($data as $item){
             $owner = $item->user;
+            $kota = $item->kota;
+            $kategori = $item->kategori;
         } 
 
         return response()->json([
@@ -50,6 +56,10 @@ class LapanganController extends Controller
     public function showOwnedLapangan($idOwner)
     {
         $data = Lapangan::where('idOwner',$idOwner)->get();
+        foreach($data as $item){
+            $kota = $item->kota;
+            $kategori = $item->kategori;
+        } 
 
         return response()->json([
             'status' => 'berhasil',
@@ -61,6 +71,8 @@ class LapanganController extends Controller
     {
         $data = Lapangan::where('id',$id)->first();
         $owner = $data->user;
+        $kota = $item->kota;
+        $kategori = $item->kategori;
         return response()->json([
             'status' => 'berhasil',
             'data' => $data,
@@ -73,6 +85,8 @@ class LapanganController extends Controller
         $data = Lapangan::where('namaLapangan','like','%'.$name.'%')->get();
         foreach($data as $item){
             $owner = $item->user;
+            $kota = $item->kota;
+            $kategori = $item->kategori;
         } 
 
         return response()->json([
@@ -106,6 +120,8 @@ class LapanganController extends Controller
                     'status' => 'berhasil',
                     'data' => $data,
                     'owner' => $data->user,
+                    'kota' => $data->kota,
+                    'kategori' => $data->kategori,
                 ],200);
             }else{
                 return response()->json([
