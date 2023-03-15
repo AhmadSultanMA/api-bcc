@@ -71,8 +71,9 @@ class LapanganController extends Controller
     {
         $data = Lapangan::where('id',$id)->first();
         $owner = $data->user;
-        $kota = $item->kota;
-        $kategori = $item->kategori;
+        $kota = $data->kota;
+        $kategori = $data->kategori;
+
         return response()->json([
             'status' => 'berhasil',
             'data' => $data,
