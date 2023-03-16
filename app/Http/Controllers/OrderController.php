@@ -73,18 +73,16 @@ class OrderController extends Controller
                 $order->status = 'Paid';
                 $order->save();
 
-                return response()->json([
-                    'data' => $order,
-                ]);
+                return Request.CreateResponse(HttpStatusCode.OK);
             }else if($request->transaction_status == 'deny'){
                 return response()->json([
                     'data' => 'pembayaran di tolak',
-                ]);
+                ],200);
             }
            
         }
         return response()->json([
             'data' => 'gagal mendapat hash',
-        ]);
+        ],200);
     }
 }
