@@ -58,6 +58,8 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
     // Authentication
     Route::post('/logout',[AuthController::class, 'logout']);
     Route::get('/userId/{id}', [AuthController::class, 'showUserById']);
+    Route::post('/editUser',[AuthController::class, 'editUser']);
+
 
     Route::get('/showAlat/{idLapangan}',[AlatSewaController::class, 'showAlat']);
 
