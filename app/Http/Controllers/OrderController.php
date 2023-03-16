@@ -73,7 +73,9 @@ class OrderController extends Controller
                 $order->status = 'Paid';
                 $order->save();
 
-                return Request.CreateResponse(HttpStatusCode.OK);
+                return response()->json([
+                    'data' => $order,
+                ],200);
             }else if($request->transaction_status == 'deny'){
                 return response()->json([
                     'data' => 'pembayaran di tolak',
