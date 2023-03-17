@@ -15,15 +15,8 @@ class OrderController extends Controller
     public function showOrder($idOwner)
     {
         $data = Order::where('idOwner',$idOwner)->get();
-        if($data->idAlat==null){
-            foreach($data as $item){
-                $lapangan = $item->lapangan;  
-            }
-        }else{
-            foreach($data as $item){
-                $lapangan = $item->lapangan;  
-                $alat = $item->alat;  
-            }
+        foreach($data as $item){
+            $lapangan = $item->lapangan;  
         }
 
         return response()->json([
@@ -48,15 +41,8 @@ class OrderController extends Controller
     public function showOrderIdLapangan($idLapangan)
     {
         $data = Order::where('idLapangan',$idLapangan)->get();
-        if($data->idAlat==null){
-            foreach($data as $item){
-                $lapangan = $item->lapangan;  
-            }
-        }else{
-            foreach($data as $item){
-                $lapangan = $item->lapangan;  
-                $alat = $item->alat;  
-            }
+        foreach($data as $item){
+            $lapangan = $item->lapangan;  
         }
 
         return response()->json([
@@ -81,15 +67,8 @@ class OrderController extends Controller
     public function showOrderById($idOwner,$id)
     {
         $data = Order::where('idOwner',$idOwner)->where('id',$id)->get();
-        if($data->idAlat==null){
-            foreach($data as $item){
-                $lapangan = $item->lapangan;  
-            }
-        }else{
-            foreach($data as $item){
-                $lapangan = $item->lapangan;  
-                $alat = $item->alat;  
-            }
+        foreach($data as $item){
+            $lapangan = $item->lapangan;  
         }
 
         return response()->json([
