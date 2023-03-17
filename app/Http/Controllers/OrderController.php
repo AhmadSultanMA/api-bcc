@@ -50,7 +50,7 @@ class OrderController extends Controller
         $order->status = 0;
         $order->save();
 
-        $data = Order::where('order_id',$order->order_id)->first();
+        $data = Order::where('id',$order->id)->first();
         // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = config('midtrans.server_key');
 
