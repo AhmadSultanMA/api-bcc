@@ -6,20 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
-class Order extends Model
+class OrderKursus extends Model
 {
     use HasFactory;
 
-    protected $table = 'order';
+    protected $table = 'orderkursus';
 
     protected $fillable = [
         'order_id',
         'idOwner',
-        'idLapangan',
-        'idAlat',
-        'jmlJam',
-        'jamMulai',
-        'jamSelesai',
+        'idKursus',
+        'jmlBulan',
         'harga',
         'tanggalBooking',
         'status',
@@ -32,7 +29,7 @@ class Order extends Model
             return generateOrderId();
         }
 
-        $this->attributes['order_id'] = $number;
+        $this->attributes['order_id'] = "ko$number";
     }
     
     public function OrderIdExists($number) {
@@ -44,22 +41,17 @@ class Order extends Model
         return $this->belongsTo(User::class,'idOwner');
     }
 
-    public function lapangan()
+    public function kursus()
     {
-        return $this->belongsTo(Lapangan::class,'idLapangan');
+        return $this->belongsTo(KursusPelatih::class,'idKursus');
     }
 
-    public function alat()
-    {
-        return $this->belongsTo(AlatSewa::class,'idAlat');
-    }
-
-    public function setTanggalMain($value)
+    public function setTanggalKursus($value)
     {
         $this->attributes['tanggalBooking'] = Carbon::createFromFormat('m/d/Y', $value)->format('Y-m-d');
     }
 
-    public function getTanggalMain()
+    public function getTanggalKursus()
     {
         return Carbon::createFromFormat('Y-m-d',$this->attributes['tanggalBooking'])->format('m/d/Y');
     }

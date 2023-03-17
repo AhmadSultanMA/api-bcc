@@ -27,4 +27,9 @@ class AlatSewa extends Model
     {
         return $this->belongsTo(User::class,'idOwner');
     }
+
+    public function order()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

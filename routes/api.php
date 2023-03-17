@@ -10,7 +10,8 @@ use App\Http\Controllers\{
     AlatSewaController,
     CariTemanController,
     AccTemanController,
-    OrderController
+    OrderController,
+    KursusController
 };
 
 
@@ -37,7 +38,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::get('/showPelatih',[AuthController::class, 'showPelatih']);
 
     Route::post('/callback', [OrderController::class, 'callback']);
-    
+
     // Kota
     Route::get('/showKota',[KotaController::class, 'showKota']);
 
@@ -61,19 +62,35 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::get('/userId/{id}', [AuthController::class, 'showUserById']);
     Route::post('/editUser',[AuthController::class, 'editUser']);
 
+    // Payment
     Route::post('/checkout', [OrderController::class, 'checkout']);
     Route::get('/showOrder/{idOwner}', [OrderController::class, 'showOrder']);
     Route::get('/showOrderById/{idOwner}/{id}', [OrderController::class, 'showOrderById']);
     Route::get('/showOrderIdLapangan/{idLapangan}', [OrderController::class, 'showOrderIdLapangan']);
+
+    Route::post('/checkoutKursus', [OrderController::class, 'checkoutKursus']);
+    Route::get('/showOrderKursus/{idOwner}', [OrderController::class, 'showOrderKursus']);
+    Route::get('/showOrderKursusById/{idOwner}/{id}', [OrderController::class, 'showOrderKursusById']);
+    Route::get('/showOrderIdKursus/{idKursus}', [OrderController::class, 'showOrderIdKursus']);
+    
     Route::post('/getToken', [OrderController::class, 'getToken']);
 
     Route::get('/showAlat/{idLapangan}',[AlatSewaController::class, 'showAlat']);
 
+    // Kursus
+    Route::get('/showKursus/{idKategori}/{idKota}',[KursusController::class, 'showKursus']);
+    Route::get('/showOwnedKursus/{idPelatih}',[KursusController::class, 'showOwnedKursus']);
+    Route::post('/addKursus',[KursusController::class, 'addKursus']);
+    Route::post('/editKursus',[KursusController::class, 'editKursus']);
+    Route::post('/deleteKursus/{id}',[KursusController::class, 'deleteKursus']);
+
+    // Cari Teman
     Route::post('/addCariTeman',[CariTemanController::class, 'addCariTeman']);
     Route::post('/updateCariTeman',[CariTemanController::class, 'updateCariTeman']);
     Route::get('/cariTeman/{idKategori}/{idKota}',[CariTemanController::class, 'showCariTeman']);
     Route::post('/deleteCariTeman/{id}',[CariTemanController::class, 'deleteCariTeman']);
 
+    // Acceptance Teman
     Route::post('/addAccTeman',[AccTemanController::class, 'addAccTeman']);
     Route::get('/showAccTeman/{idCariTeman}/{idTeman}',[AccTemanController::class, 'showAccTeman']);
     Route::get('/showAccTemanById/{id}',[AccTemanController::class, 'showAccTemanById']);
