@@ -63,17 +63,6 @@ class OrderController extends Controller
         ]);
     }
 
-    public function captureTransaction()
-    {
-        $client = new \GuzzleHttp\Client();
-
-        $response = $client->request('POST', 'https://api.sandbox.midtrans.com/v2/capture');
-
-        return response()->json([
-            'data' =>$response->getBody(),
-        ]);
-    }
-
     public function callback(Request $request)
     {
         $serverKey = config('midtrans.server_key');
@@ -85,7 +74,7 @@ class OrderController extends Controller
                 $order->save();
 
                 return response()->json([
-                    'data' => $order,
+                    'data' => 'Berhasil',
                 ],200);
             }else if($request->transaction_status == 'deny'){
                 return response()->json([
