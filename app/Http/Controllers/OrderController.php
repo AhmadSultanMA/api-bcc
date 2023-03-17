@@ -65,7 +65,7 @@ class OrderController extends Controller
                 'authentication'=> true,
             ),
             'customer_details' => array(
-                'name' => $data->user->name,
+                'first_name' => $data->user->name,
                 'email' => $data->user->email,
                 'phone' => $data->user->nomor,
             ),
