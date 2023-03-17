@@ -63,6 +63,17 @@ class OrderController extends Controller
         ]);
     }
 
+    public function captureTransaction()
+    {
+        $client = new \GuzzleHttp\Client();
+
+        $response = $client->request('POST', 'https://api.sandbox.midtrans.com/v2/capture');
+
+        return response()->json([
+            'data' =>$response->getBody(),
+        ]);
+    }
+
     public function callback(Request $request)
     {
         $serverKey = config('midtrans.server_key');

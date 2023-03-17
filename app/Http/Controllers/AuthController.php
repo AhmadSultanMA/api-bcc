@@ -72,6 +72,16 @@ class AuthController extends Controller
         }
     }
 
+    public function showPelatih()
+    {
+        $data = User::whereHas('roles', function($q){ $q->where('name', 'pelatih'); })->get();
+
+        return response()->json([
+            'status' => 'berhasil',
+            'data' => $data,
+        ],200);
+    }
+
     public function register(Request $request)
     {
         $rules = array(

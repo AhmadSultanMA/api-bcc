@@ -35,7 +35,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::post('/login',[AuthController::class, 'login']);
     
     Route::post('/checkout', [OrderController::class, 'checkout']);
+    Route::post('/captureTransaction', [OrderController::class, 'captureTransaction']);
     Route::post('/callback', [OrderController::class, 'callback']);
+
+    Route::get('/showPelatih',[AuthController::class, 'showPelatih']);
 
     // Kota
     Route::get('/showKota',[KotaController::class, 'showKota']);
