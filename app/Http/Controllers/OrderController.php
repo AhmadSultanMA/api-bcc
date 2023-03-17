@@ -24,7 +24,7 @@ class OrderController extends Controller
 
     public function showOrderById($idOwner,$id)
     {
-        $data = Order::where('idOwner',$idOwner)->where('id',$id)->get();
+        $data = Order::where('idOwner',$idOwner)->where('order_id',$id)->get();
         foreach($data as $item){
             $lapangan = $item->lapangan;
         }
@@ -38,6 +38,7 @@ class OrderController extends Controller
     public function checkOut(Request $request)
     {
         $order = new Order;
+        $order->generateOrderId();
         $order->idLapangan = $request->idLapangan;
         $order->idOwner = $request->idOwner;
         $order->idAlat = $request->idAlat;
@@ -49,13 +50,13 @@ class OrderController extends Controller
         $order->status = 0;
         $order->save();
 
-        $data = Order::where('id',$order->id)->first();
+        $data = Order::where('order_id',$order->order_id)->first();
         // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = config('midtrans.server_key');
 
         $params = array(
             'transaction_details' => array(
-                'order_id' => $data->id,
+                'order_id' => $data->order_id,
                 'gross_amount' => $data->harga,
             ),
             'payment_type' => 'credit_card',

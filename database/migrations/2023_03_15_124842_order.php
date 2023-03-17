@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('order', function (Blueprint $table) {
-            $table->id();
+            $table->text('order_id')->unique();
             $table->foreignId('idOwner');
             $table->foreignId('idLapangan');
             $table->foreignId('idAlat')->nullable();

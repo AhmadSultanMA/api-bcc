@@ -13,6 +13,7 @@ class Order extends Model
     protected $table = 'order';
 
     protected $fillable = [
+        'order_id',
         'idOwner',
         'idLapangan',
         'idAlat',
@@ -23,6 +24,19 @@ class Order extends Model
         'tanggalBooking',
         'status',
     ];
+    function generateOrderId() {
+        $number = mt_rand(1000000000, 9999999999);
+
+        if ($this->OrderIdExists($number)) {
+            return generateOrderId();
+        }
+
+        $this->attributes['order_id'] = $number;
+    }
+    
+    function OrderIdExists($number) {
+        return Order::where('order_id',$number)->exists();
+    }
 
     public function user()
     {
