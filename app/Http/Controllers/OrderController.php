@@ -84,13 +84,13 @@ class OrderController extends Controller
         $hashed = hash("sha512",$request->order_id.$request->status_code.$request->gross_amount.$serverKey);
         if($hashed == $request->signature_key){
             if($request->transaction_status == 'capture'){
-                $order = Order::find($request->order_id);
+                $order = Order::where('order_id',$request->order_id);
                 $order->update(['status' => 1]);
                 return response()->json([
                     'data' => 'Berhasil',
                 ],200);
             }else if($request->transaction_status == 'deny'){
-                $order = Order::find($request->order_id);
+                $order = Order::where('order_id',$request->order_id);
                 $order->update(['status' => 2]);
                 return response()->json([
                     'data' => 'pembayaran di tolak',
