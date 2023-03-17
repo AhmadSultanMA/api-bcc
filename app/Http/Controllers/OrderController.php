@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Models\OrderKursus;
 use GuzzleHttp\Client;
-use Midtrans\MidtransNew3ds;
 use Response;
 use Hash;
 
@@ -133,8 +132,6 @@ class OrderController extends Controller
         \Midtrans\Config::$isSanitized = true;
 
         \Midtrans\Config::$is3ds = true;
-
-        MidtransNew3ds::$clientKey = config('midtrans.client_key');
 
         $params = array(
             'transaction_details' => array(
