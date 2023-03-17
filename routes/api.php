@@ -34,12 +34,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     Route::post('/registerPelatih', [AuthController::class, 'registerPelatih']);
     Route::post('/login',[AuthController::class, 'login']);
     
-    Route::post('/checkout', [OrderController::class, 'checkout']);
-    Route::post('/callback', [OrderController::class, 'callback']);
-    Route::get('/showOrder/{idOwner}', [OrderController::class, 'showOrder']);
-    Route::get('/showOrderById/{idOwner}/{id}', [OrderController::class, 'showOrderById']);
-    Route::post('/getToken', [OrderController::class, 'getToken']);
-    
     Route::get('/showPelatih',[AuthController::class, 'showPelatih']);
 
     // Kota
@@ -65,6 +59,12 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::get('/userId/{id}', [AuthController::class, 'showUserById']);
     Route::post('/editUser',[AuthController::class, 'editUser']);
 
+    Route::post('/checkout', [OrderController::class, 'checkout']);
+    Route::post('/callback', [OrderController::class, 'callback']);
+    Route::get('/showOrder/{idOwner}', [OrderController::class, 'showOrder']);
+    Route::get('/showOrderById/{idOwner}/{id}', [OrderController::class, 'showOrderById']);
+    Route::get('/showOrderIdLapangan/{idLapangan}', [OrderController::class, 'showOrderIdLapangan']);
+    Route::post('/getToken', [OrderController::class, 'getToken']);
 
     Route::get('/showAlat/{idLapangan}',[AlatSewaController::class, 'showAlat']);
 
