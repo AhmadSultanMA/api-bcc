@@ -64,7 +64,7 @@ class UserSeeder extends Seeder
 
         $user1 = User::create([
             'name' => 'user1',
-            'email' => 'nkcvzkjasdfsdk@gmail.com',
+            'email' => 'user1@gmail.com',
             'password' => bcrypt('user1bolehlogin'),
             'gambar' => 'https://res.cloudinary.com/dfkoknpii/image/upload/v1646532385/lastproject/account_jzb2mv.png',
             'nomor' => '6281211111754',
