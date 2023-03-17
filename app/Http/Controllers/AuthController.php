@@ -45,7 +45,6 @@ class AuthController extends Controller
         if ($request->file('gambar') === null){
         $data->name = $request->name;
         $data->pekerjaan = $request->pekerjaan;
-        $data->umur = $request->umur;
         $data->deskripsi = $request->deskripsi;
         $data->save();
 
@@ -60,7 +59,6 @@ class AuthController extends Controller
             
             $data->name = $request->name;
             $data->pekerjaan = $request->pekerjaan;
-            $data->umur = $request->umur;
             $data->deskripsi = $request->deskripsi;
             $data->gambar = $result;
             $data->save();

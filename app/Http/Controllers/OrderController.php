@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use GuzzleHttp\Client;
+use Response;
 use Hash;
 
 class OrderController extends Controller
@@ -33,6 +35,24 @@ class OrderController extends Controller
             'status' => 'berhasil',
             'data' =>$data,
         ]);
+    }
+
+    public function getToken(Request $request)
+    {
+        $client = new Client();
+        $client_key = $request->client_key;
+        $card_number = $request->card_number;
+        $card_cvv = $request->card_cvv;
+        $card_exp_month = $request->card_exp_month;
+        $card_exp_year = $request->card_exp_year; 
+        $response = $client->request('GET',"https://api.sandbox.midtrans.com/v2/token?client_key=$client_key&card_number=$card_number&card_cvv=$card_cvv&card_exp_month=$card_exp_month&card_exp_year=$card_exp_year", [
+            'headers' => [
+                'Accept' => 'application/json',
+              ],
+        ]);
+        $result = $response->getBody();
+        echo $result;
+        
     }
 
     public function checkOut(Request $request)
@@ -65,7 +85,7 @@ class OrderController extends Controller
                 'authentication'=> true,
             ),
             'customer_details' => array(
-                'name' => $data->user->name,
+                'first_name' => $data->user->name,
                 'email' => $data->user->email,
                 'phone' => $data->user->nomor,
             ),
