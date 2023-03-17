@@ -24,7 +24,7 @@ class OrderController extends Controller
 
     public function showOrderById($idOwner,$id)
     {
-        $data = Order::where('idOwner',$idOwner)->where('order_id',$id)->get();
+        $data = Order::where('idOwner',$idOwner)->where('id',$id)->get();
         foreach($data as $item){
             $lapangan = $item->lapangan;
         }
