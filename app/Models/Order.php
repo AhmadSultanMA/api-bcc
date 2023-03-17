@@ -24,7 +24,8 @@ class Order extends Model
         'tanggalBooking',
         'status',
     ];
-    function generateOrderId() {
+
+    public function generateOrderId() {
         $number = mt_rand(1000000000, 9999999999);
 
         if ($this->OrderIdExists($number)) {
@@ -34,7 +35,7 @@ class Order extends Model
         $this->attributes['order_id'] = $number;
     }
     
-    function OrderIdExists($number) {
+    public function OrderIdExists($number) {
         return Order::where('order_id',$number)->exists();
     }
 
