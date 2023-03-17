@@ -22,6 +22,19 @@ class OrderController extends Controller
         ]);
     }
 
+    public function showOrderById($idOwner,$id)
+    {
+        $data = Order::where('idOwner',$idOwner)->where('id',$id)->get();
+        foreach($data as $item){
+            $lapangan = $item->lapangan;
+        }
+
+        return response()->json([
+            'status' => 'berhasil',
+            'data' =>$data,
+        ]);
+    }
+
     public function checkOut(Request $request)
     {
         $order = new Order;
