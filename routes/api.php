@@ -36,6 +36,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     
     Route::get('/showPelatih',[AuthController::class, 'showPelatih']);
 
+    Route::post('/callback', [OrderController::class, 'callback']);
+    
     // Kota
     Route::get('/showKota',[KotaController::class, 'showKota']);
 
@@ -60,7 +62,6 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::post('/editUser',[AuthController::class, 'editUser']);
 
     Route::post('/checkout', [OrderController::class, 'checkout']);
-    Route::post('/callback', [OrderController::class, 'callback']);
     Route::get('/showOrder/{idOwner}', [OrderController::class, 'showOrder']);
     Route::get('/showOrderById/{idOwner}/{id}', [OrderController::class, 'showOrderById']);
     Route::get('/showOrderIdLapangan/{idLapangan}', [OrderController::class, 'showOrderIdLapangan']);
