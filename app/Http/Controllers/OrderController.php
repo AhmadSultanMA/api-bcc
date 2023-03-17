@@ -33,6 +33,7 @@ class OrderController extends Controller
         $order->jmlJam = $request->jmlJam;
         $order->jamSelesai = $request->jamSelesai;
         $order->jamMulai = $request->jamMulai;
+        $order->status = 0;
         $order->save();
 
         $data = Order::where('id',$order->id)->first();
@@ -70,12 +71,13 @@ class OrderController extends Controller
         if($hashed == $request->signature_key){
             if($request->transaction_status == 'capture'){
                 $order = Order::find($request->order_id);
-                $order->update(['status' => 'Paid']);
-
+                $order->update(['status' => 1]);
                 return response()->json([
                     'data' => 'Berhasil',
                 ],200);
             }else if($request->transaction_status == 'deny'){
+                $order = Order::find($request->order_id);
+                $order->update(['status' => 2]);
                 return response()->json([
                     'data' => 'pembayaran di tolak',
                 ],200);

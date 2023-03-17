@@ -23,7 +23,7 @@ return new class extends Migration
             $table->integer('jamSelesai');
             $table->bigInteger('harga');
             $table->date('tanggalBooking');
-            $table->enum('status',['Unpaid','Paid']);
+            $table->integer('status');
             $table->timestamps();
         });
     }
