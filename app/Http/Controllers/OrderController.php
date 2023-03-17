@@ -127,6 +127,8 @@ class OrderController extends Controller
         // Set your Merchant Server Key
         \Midtrans\Config::$serverKey = config('midtrans.server_key');
 
+        \Midtrans\Config::$is3ds = true;
+
         $params = array(
             'transaction_details' => array(
                 'order_id' => $data->order_id,
